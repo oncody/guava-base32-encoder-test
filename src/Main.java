@@ -13,16 +13,14 @@ public class Main {
         for(int charCount = 1; charCount <= 20; charCount++) {
             int byteCount = (int) Math.ceil((1.0 * charCount * BITS_PER_BASE_32_CHAR) / BITS_PER_BYTE);
             int bitCount = byteCount * BITS_PER_BYTE;
-//            int usableChars = (int) Math.floor((1.0 * bitCount) / BITS_PER_BASE_32_CHAR);
-            System.out.println(String.format("Chars: (%s) Bytes: (%s) Bits: (%s)", charCount, byteCount, bitCount));
 
             byte[] randomBytes = new byte[byteCount];
             randomDataGenerator.nextBytes(randomBytes);
             String randomString = base32Encoder.encode(randomBytes);
             String trimmedRandomString = randomString.substring(0, charCount);
-            String paddedTrimmedRandomString = randomString.substring(0, charCount) + "E";
-            System.out.println(String.format("Chars: (%s) Bytes: (%s) Bits: (%s) String: (%s) Trimmed: (%s) Padded: (%s)", charCount, byteCount, bitCount, randomString, trimmedRandomString, paddedTrimmedRandomString));
-            byte[] trimmedStringBytes = base32Encoder.decode(paddedTrimmedRandomString);
+//            String paddedTrimmedRandomString = randomString.substring(0, charCount) + "E";
+            System.out.println(String.format("Chars: (%s) Bytes: (%s) Bits: (%s) String: (%s) Trimmed: (%s) ", charCount, byteCount, bitCount, randomString, trimmedRandomString));
+//            byte[] trimmedStringBytes = base32Encoder.decode(paddedTrimmedRandomString);
         }
     }
 }
